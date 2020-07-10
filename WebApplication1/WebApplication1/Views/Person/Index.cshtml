@@ -1,0 +1,37 @@
+﻿@model List<WebApplication1.Models.Person>
+@{
+    ViewBag.Title = "Index";
+}
+<a style="margin-bottom:90px" href="@Url.Action("Create")" class="btn btn-outline-primary">Yeni Sexs Yarat</a>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Edit/Delete</th>
+       
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+
+                <td>
+                    <a href="@Url.Action("Edit",new { Id=item.Id})">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a onclick="return confirm('Eminsiz?')" href="@Url.Action("Delete",new { Id=item.Id})" class="text-danger">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+             
+            </tr>
+        }
+
+        </tbody>
+</table>
